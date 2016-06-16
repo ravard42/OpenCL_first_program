@@ -2,10 +2,12 @@
 
 int 	main()
 {
+	t_cl *cl;
 	int		*input;
 	int		*output;
 	int		n;
 
+	cl = (t_cl *)malloc(sizeof(t_cl));
 	n = 5;
 	input = (int *)malloc(sizeof(cl_int) * 5);
 	input[0] = 2;
@@ -14,7 +16,8 @@ int 	main()
 	input[3] = 8;
 	input[4] = 10;
 	output = (int *)malloc(sizeof(cl_int) * 5);
-	run_cl(input, output, n);
+	init_cl(cl);
+	run_cl(input, output, n, cl);
 	
 	n = -1;
 	while (++n < 5)
@@ -24,5 +27,6 @@ int 	main()
 
 	free(input);
 	free(output);
+	release_cl(cl);
 	return (0);
 }
